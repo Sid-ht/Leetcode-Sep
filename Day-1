@@ -1,0 +1,23 @@
+class Solution:
+    def largestTimeFromDigits(self, A: List[int]) -> str:
+        result = ""
+        for i in range(4):
+            for j in range(4):
+                for k in range(4):
+                    if i==j or j==k or k==i: continue
+                    hh = str(A[i])+str(A[j])
+                    mm = str(A[k])+str(A[6-i-j-k])
+                    samay = hh + ':' + mm
+                    if hh < "24" and mm < "60" and samay>result: result = samay
+        return result
+
+
+
+#using permutations and faster than above solution
+class Solution:
+    def largestTimeFromDigits(self, A: List[int]) -> str:
+        arr = list(permutations(sorted(A, reverse=True)))
+        for h1,h2,m1,m2 in arr:
+            if h1*10+h2 < 24 and m1*10+m2 < 60:
+                return f'{h1}{h2}:{m1}{m2}'
+        return ''
