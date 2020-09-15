@@ -1,0 +1,15 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        max_global = nums[0]
+        max_local , min_local = nums[0], nums[0]
+        
+        for i in range(1,len(nums)):
+            temp = max_local
+            max_local = max(nums[i], nums[i]*max_local, nums[i]*min_local)
+            min_local = min(nums[i], nums[i]*temp, nums[i]*min_local)
+            
+            max_global = max(max_global,max_local)
+        
+        return max_global
+        
+#Kadane's Algorithm
