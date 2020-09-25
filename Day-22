@@ -1,10 +1,6 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
-        cnt = Counter()
-        for i in nums:
-            cnt[i]+=1
-
-
+        cnt = collections.Counter(nums)
         l = []
         for k,v in cnt.items():
             if cnt[k] > len(nums)/3:
