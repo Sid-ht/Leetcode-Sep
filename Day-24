@@ -1,0 +1,15 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        cnt = Counter()
+        for i in t:
+            cnt[i]+=1
+            
+        cnt1 = Counter()
+        for i in s:
+            cnt1[i]+=1
+            
+        s1 = ""
+        c = cnt - cnt1
+        for k,v in c.items():
+            s1+=k
+        return s1
